@@ -19,3 +19,7 @@ source format. I want to be able have a wiki that is usable regardless of
 whether it gets rendered or not. That said, the envisioned target format is a
 web-page that looks a lot like a GitBook or wiki-page.
 
+Open questions
+==============
+
+How to deal with math symbols? LaTeX would be nice ...
