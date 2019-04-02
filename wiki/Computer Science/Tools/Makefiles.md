@@ -54,3 +54,8 @@ In practice, some rules will not be created to make files that are named the sam
 
 Listing as `.PHONY` means `make` will not look for a file of that name, but just do that rule.
 
+
+Flags
+=====
+
+- `-jN` means use `N` threads. E.g., `-j3` means run with 3 threads.
