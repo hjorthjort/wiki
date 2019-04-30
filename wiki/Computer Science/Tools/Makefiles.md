@@ -59,3 +59,6 @@ Flags
 =====
 
 - `-jN` means use `N` threads. E.g., `-j3` means run with 3 threads.
+- `-d` prints debug output.
+  Good for learning how the `make` program actually resolves rules.
+  Also good to see why a rule is failing: it may not be the one that `make` says it fails on that is the problem.
