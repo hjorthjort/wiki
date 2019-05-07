@@ -1,3 +1,8 @@
+Explore vulnerabilities
+=======================
+
+At <https://contract-library.com/> you can find a scan of all smart contracts on Ethereum that have warnings for certain vulnerabilities.
+
 Griefing Wallets
 ================
 
