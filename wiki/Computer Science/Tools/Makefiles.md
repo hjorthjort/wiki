@@ -25,8 +25,15 @@ dependencies is), it will be created using the rule for it.
 
 **You can break lines by ending them in "\"**
 
+Automatic variables
+===================
+
+The reference: <https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html>
+
+`$@` is the name of the target of the rule.
+
 Patterns
-========
+--------
 
 Make your life simpler by using patterns:
 
@@ -42,6 +49,20 @@ bar.c` it will use (or make) `bar.o`.
 - `$^` is the names of all prerequisites, spearated by spaces. Removes duplicates.
 - `$+` is the names of all prerequisites exactly in the order they were specified.
 - `$?` is the names of all prerequisites that are newer than the target.
+
+### Dynamic dependencies ###
+
+Check this out:
+
+```make
+SIZES=100 1000 10000 100000 1000000 5000000 10000000
+foo%:
+	echo $@
+
+run: $(SIZES:%=foo%)
+```
+
+When calling `make run`, the dependency will be read as "for every element `%` of `SIZES`, `foo%` is a dependency." 
 
 `.PHONY`
 ========
