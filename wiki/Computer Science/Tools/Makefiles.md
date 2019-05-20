@@ -45,6 +45,7 @@ Make your life simpler by using patterns:
 The `%` in the rule will match the same string in both instances, so if i `make
 bar.c` it will use (or make) `bar.o`.
 
+- `$*` is the matching stem (what `%` is matching).
 - `$<` is the alias for the first prerequisite.
 - `$^` is the names of all prerequisites, spearated by spaces. Removes duplicates.
 - `$+` is the names of all prerequisites exactly in the order they were specified.
