@@ -40,3 +40,37 @@ The engine then marks all accessible pages as such, and relies on hardware to ca
 [^1]: This is the actual requirement for getting a value of type `t` with the isntruction `(i32.const k) (t.load offset=o align=a)`.
 
 [^3]: Note: `br` should be read "branch" rather than "break"; although "break" makes sense for blocks and ite-statements, it doesn't make sense for `loop`, because in `loop` a branch means "repeat from the top of this loop": this is how loops get repeated.
+
+Tips and tricks
+===============
+
+Standard `.wast` function has the header
+```
+(func $internalName (export "funcName") (param i64) (result i32) (local i64)
+```
+
+Use `$internalName` to `call`, and `"funcName"` to `invoke` or `import`.
+
+
+While loop with index (for loop)
+--------------------------------
+
+- Declare a local for your loop index (i32 or i64). It is initialized to 0.
+- Make a block with a loop in it
+- To break out of the loop, branch to the block label.
+- To continue the loop, branch to the loop label.
+
+Example:
+
+```
+func (export "foo") (local i32)
+  block
+    loop
+      ;; Do something. If you need to break, call br to the block.
+      (local.tee (i32.add (local.get 0) (i32.const 1))) ;; Increment
+      i32.const 10 ;; Num iterations.
+      i32.lt
+      br_if 0 ;; Redo the loop.
+    end
+  end
+```
