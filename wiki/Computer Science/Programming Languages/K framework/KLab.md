@@ -1,6 +1,4 @@
-# KLab #
-
-## Key Bindings
+# Key Bindings
 
 Toggle different views by pressing any of the following keys:
 
@@ -38,3 +36,14 @@ Remember, you must turn on the **d**ebug cells view to see these (above).
 -   `:hide ethereum.evm.callStack.pc`  - hide the contents of the `<pc>` cell in the **d**ebug cells view.
 -   `:omit   gas pc` - omit the contents of the `<gas>` and `<pc>` cells in the **t**erm view.
 -   `:unomit pc programBytes`  - unomit the contents of the `<pc>` and `<programBytes>` cells in the **t**erm view.
+
+# Pretty printing
+
+KLab uses the generated K AST, which can look unwieldy die to its structuring and naming practices.
+It is possible to make a language construct display in a certain way by adding a rule for it in one of the KLab files.
+Currently that file is `lib/kast.js` (2019-06-06).
+Currently, the place for adding prettier rules (for example, making `_+Int_` display as `+`) is in the lists `infix`[^2] and `tokenMap`[^1] in that file.
+
+[^1]: <https://github.com/dapphub/klab/blob/2be2c339dd0df009dc4976799b2ab8aede230e75/lib/kast.js#L249>
+
+[^2]: <https://github.com/dapphub/klab/blob/2be2c339dd0df009dc4976799b2ab8aede230e75/lib/kast.js#L262>
