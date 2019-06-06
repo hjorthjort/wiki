@@ -1,6 +1,6 @@
 # KLab #
 
-### Key Bindings
+## Key Bindings
 
 Toggle different views by pressing any of the following keys:
 
@@ -38,4 +38,3 @@ Remember, you must turn on the **d**ebug cells view to see these (above).
 -   `:hide ethereum.evm.callStack.pc`  - hide the contents of the `<pc>` cell in the **d**ebug cells view.
 -   `:omit   gas pc` - omit the contents of the `<gas>` and `<pc>` cells in the **t**erm view.
 -   `:unomit pc programBytes`  - unomit the contents of the `<pc>` and `<programBytes>` cells in the **t**erm view.
-
