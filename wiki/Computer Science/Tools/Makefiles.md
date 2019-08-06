@@ -45,13 +45,25 @@ Make your life simpler by using patterns:
 The `%` in the rule will match the same string in both instances, so if i `make
 bar.c` it will use (or make) `bar.o`.
 
+- `$@` is the target being created.
 - `$*` is the matching stem (what `%` is matching).
 - `$<` is the alias for the first prerequisite.
 - `$^` is the names of all prerequisites, spearated by spaces. Removes duplicates.
 - `$+` is the names of all prerequisites exactly in the order they were specified.
 - `$?` is the names of all prerequisites that are newer than the target.
 
-### Dynamic dependencies ###
+### Substitutions ###
+
+```make
+FILES:=apa.foo bepa.foo
+SUBST:=$(patsubst %.foo, hello_%_world, $(FILES)) // => SUBST:=hello_apa_world hello_bepa_world
+```
+
+It's super common to just want to substitute suffixes, so it has a short form:
+
+```make
+BFILES:=$(FILES:.foo=.bar) // BFILES:=apa.bar bepa.bar
+```
 
 Check this out:
 
