@@ -1,9 +1,55 @@
 Here's a good list of [known attacks](https://consensys.github.io/smart-contract-best-practices/known_attacks/)
 
+Front-running attacks
+=====================
+
+Front-running takes advantage of the delay between a transaction being sent and it being mined.
+The attacker notices a transaction that they can benefit from and sends a transaction of their own with high gas-price to ensure they get mined quicker.
+
+## Market manipulation / "insider trading"
+
+Relevant to a decentralized exchange, or any other contract in which assets are sold and bought at some market price.
+If a big order comes in, say a sell order on asset ASS, an attacker can front-run it and sell their ASS before the price drops.
+It's a format of shorting, but an arbitrage, so the gains are almost guaranteed.
+For quadratic shares contracts, this can be very relevant: if someone wants to buy some shares, a fron-runner can long it, buying one share, then waiting for the larger order to go through, then selling their share.
+Note that, since anyone can front-run, this could cause some pretty wild fluctuations as price drops due to many sell-orders coming in, essentially blocking the big sell order, until prices readjust.
+
+## ERC20 `approve` and `transferFrom` attack.
+
+Well known: https://docs.google.com/document/d/1YLPtQxZu1UAvO9cZ1O2RPXBbT0mooh4DYKjA_jp-RLM/edit
+
+This attack works for *any* ERC20-compliant contract: it's an attack on the API, not an implementation.
+If Alice calls `approve` for `N` tokens to Bob, Bob may not call `transferFrom` right away, but may wait for a bit to transfer the tokens on Alice's behalf.
+If Alice later want to adjust the amount and calls `approve` for `M` tokens to Bob, she might expect that `M` is the new value Bob can withdraw from her.
+But now Bob can front-run: when he sees Alice's transaction, he immediately calls `transferFrom` and takes out the `N` tokens from Alice.
+Bob puts a high gas-value to ensure he beats Alice's transaction.
+When Alice's transaction arrives, Bob can now withdraw `M` of her tokens, and he has gotten an allowance of `N + M` tokens.
+
+### Mitigation
+
+The simplest mitigation is to send 2 transactions: one setting the `approve`d amount to `0` (so Bob can only get `N+0` tokens by front-running, which he already could have gotten).
+When that approval is mined and buried enough, she can send a second transaction, approving `M` tokens, or `M-N` if Bob did a front-run and she wanted to adjust the apprved amount up.
+
+If Alice wants to see if Bob is disonest, she can do the following:
+Alice can mitigate this by revoking her initial transaction if she sees Bob front-run.
+She simply sends another front-running transaction of her own (say, transferring some Ether to herself), which only needs to have higher gas-price then her `approve` transaction.
+Her front-running transaction will inrement her account nonce, making the `approve` transaction invalid.
+Game-theoretically, if both Alice and Bob are prepared for this attack, Bob can thus only gain `N` tokens, which he was already approved for, but it will cost them both more (in gas-price) than if Bob had just withdrawn in the first place.
+
+
 Faulty assumptions
 ==================
 
 Could also be titled: "Falsehoods programmers believe about Ethereum contracts"
+
+False: If you send a transaction, you can assure that the relevant state (e.g., your token balance) won't change before it gets mined
+-------------------------------------------------------------------------------------------------------------------------------------
+
+See the section on front-running.
+
+### Special case: If you ever do an `approve` on an ERC20, consider that amount already gone -- you can not adjust amount downwards later, only up
+
+See above on front-running in ERC20.
 
 False: Every contract is created with 0 ether balance
 -----------------------------------------------------
