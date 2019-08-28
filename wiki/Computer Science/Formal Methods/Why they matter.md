@@ -5,3 +5,4 @@
 * [The DAO](http://hackingdistributed.com/2016/06/18/analysis-of-the-dao-exploit/)
 * [Parity multisig](http://hackingdistributed.com/2017/07/22/deep-dive-parity-bug/)
 * [Spankchain got spanked](https://medium.com/spankchain/we-got-spanked-what-we-know-so-far-d5ed3a0f38fe)
+* [Serpent compile bug](https://medium.com/@AugurProject/serpent-compiler-vulnerability-rep-solidity-migration-5d91e4ae90dd)

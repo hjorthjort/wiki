@@ -1,5 +1,8 @@
 This is mostly a list of audit tools.
 
+More tools can be found here:
+<https://github.com/ethereum/wiki/wiki/Ethereum-Virtual-Machine-(EVM)-Awesome-List#live-on-main-network>
+
 Solidity
 ========
 
@@ -39,3 +42,6 @@ Use VS Code and this plugin to get a sense of program and data flow inside a con
 https://marketplace.visualstudio.com/items?itemName=tintinweb.solidity-visual-auditor
 
 
+### Solidity decompiler
+JEB
+https://www.pnfsoftware.com/blog/ethereum-smart-contract-decompiler/
