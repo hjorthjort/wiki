@@ -21,6 +21,34 @@ Means: don't apply this rule unless the values are fully available, i.e., don't 
 
 # Things to keep in mind
 
+## `--boundary-cells`
+
+TLDR: Invoke `kprove` with the flag `--boundary-cells k`.
+
+If you write a spec like this
+
+```k
+rule <k> FOO => BAR ... </k>
+```
+
+the three dots at the end can come back to bite you.
+Remember that they represent any continuation in the `<k>` cell.
+
+```k
+rule <k> (FOO => BAR) ~> CONT </k>
+```
+
+It is entirerly possible, for some semantic, that this could happen:
+
+```k
+rule <k> CONT => BAR ~> CONT2 </k>
+```
+
+So if K gets to a point where it can't prove that `FOO` goes to `BAR` without touching `CONT`, it will try `CONT`, which can be any program.
+This leads to explosion, and in the worst case will trigger edge case bugs in your semantics that you didn't consider.
+
+## Pattern matching vs `requires`
+
 It may make sense to avoid pattern matching in rules when possible.
 The following rules may look equivalent, but they are not.
 

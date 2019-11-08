@@ -54,3 +54,13 @@ So, if `WasmInt` is definied in the syntax module, you can put an empty producti
 The more usual approach is to have the main module import the syntax module.
 That way, all the concrete syntax of the language, and some macros for example, can go in the syntax module.
 All further syntax constructs defined in the main module then become part of the abstract syntax only, not the concrete syntax.
+
+# Under the hood #
+
+The OCaml backend basically builds a few thousand lines long match expression, where each rule in the semantics is a case in the match expression.
+The LLVM backend is similar.
+The Haskell and Java backends uses unification to find out if there is an intersection of the current state and a rule, and if so incorporates that intersection in its possible paths.
+
+# Kast vs. Kore #
+
+Kast is what the Java and OCaml backend speaks, and Kore is what the LLVM and Haskell backends speaks.
