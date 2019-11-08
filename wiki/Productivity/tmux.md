@@ -1,0 +1,1 @@
+Ctlr+Z: zoom/unzoom
