@@ -67,3 +67,11 @@ rule Foo ( X:Int, Y:Int ) => Y requires X ==Int Y
 
 The problem with this is that a prover may use some specialized reasoning for `==Int` that is not available for `==K`.
 So the better approach is the bottom one.
+
+## Debugging Haskell Backend
+
+You can pass the flag `--haskell-backend-command kore-repl` to `kprove`.
+
+From Virgil:
+
+> Instead of running the haskell backend with `kore-exec`,  you can run it with `kore-repl` with the same command line flags, and then you can step through your proof. If you're lucky, `step 100` or some other large number will run the repl until the error you mentioned before, but the repl stops at branching points and you need to select a branch (`select <number>`) and restart it manually (`step 100 again`). You also have nice things like displaying past and current configurations (`config <number>`), the execution graph (`graph`) and so on (help to see all options).

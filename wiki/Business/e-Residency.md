@@ -2,6 +2,9 @@ This will list my history with applying for an e-Residency in Estonia, and setti
 
 # Costs
 - **E-residency**: 100 euros
+- **Xolo**
+  * 79 euros/month (49 euros until first revenue), ex. VAT
+  * 285 euros in "state fee" and first month of service
 
 # History 
 
@@ -43,3 +46,12 @@ All following communications arrive by e-mail.
 > 
 > If you do not collect your digital ID card within 6 months after it has arrived at the pick-up location, the Estonian Police and Border Guard Board has the right to destroy it.
 
+## February 11th (Week 16): Pick up card
+
+Picked up the card at the embassy in Stockholm.
+
+### February 14th (Week 16): Install software and start setting up company
+
+Made a Makefile for installing all the necessary dependencies on Arch Linux.
+Logged into Xolo, registered my e-Residency on my account.
+Signed a few documents---service agreement and company application---and waited.

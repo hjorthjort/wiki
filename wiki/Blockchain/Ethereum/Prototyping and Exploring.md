@@ -1,5 +1,9 @@
 How to do check the Keccak-256 of a string
 
+```sh
+pip install --user pysha3
+```
+
 ```py
 import sha3
 

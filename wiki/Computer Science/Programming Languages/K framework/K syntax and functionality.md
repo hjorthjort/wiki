@@ -17,6 +17,27 @@ Possible way to append:
 <log> ... (.List => ListItem({ ACCT | BS1 | BS2 })) </log>
 ```
 
+# Numerics #
+
+## Division and Modulus ##
+
+Euclidean division is obtained using `modInt` and `divInt`.
+`X modInt N = Y modInt N` iff `X = Y` in `Z_N`, i.e. the class of integers mod N.
+This is by always choosing the least non-negative representative.
+If `N` is negative, the result of `modInt` will still always be positive, i.e., `X modInt N ==Int X modInt -N`.
+`X modInt 0` is an error.
+`X divInt N` gives the unique quotient in the typical `X = N * Q + R`.
+
+`/Int` implements division symmetrically on positive and negative numbers: `-2 /Int 5 ==Int 0`.
+`X %Int N` maintains the sign of `X`, and : `3 %Int -5 ==Int 8 ==Int 5 ==Int 3`, and `-2 %Int -5 ==Int -7 %Int -5 ==Int -2`.
+Like with `modInt`, `X %Int N ==Int X %Int -N`.
+
+## Shifting ##
+
+Shifting can only be done by non-negative numbers, i.e., `X <<Int N` and `X >>Int N` only allow non-negative `N`.
+NOTE: The Haskell and Java backend accept negative shifts (treating them as shifts in the other direction), but the OCAML and LLVM backend do not.
+If `X` is negative, the shift is the same as if `X` was positive with only the sign changing, i.e., `X <<Int N ==Int -(-X << Int N)`.
+
 # Types #
 
 You can explicitly cast values to different types with `{}:>`, e.g., `{X}:>String`. This can be useful when extracting values from a `Map`, for example.
