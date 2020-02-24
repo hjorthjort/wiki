@@ -131,3 +131,7 @@ Here is the full reply (emphasis mine):
 >     If you receive dividends from your company, **the corporate income tax is paid in Estonia. The rate is 20%, calculated as 20/80 from the net payment you receive**. For example, if you receive €800 net as dividends, the corporate income tax of €200 has to be paid in Estonia. No personal income tax is added in Estonia. However, the personal income tax is likely to be declared and paid in the country where you are a tax resident. Please contact the local authorities in the country to learn about the income tax rules and the procedures for declaring dividends received and making the payments properly. Unfortunately, we can't assist you with this yet either. In the case of regular dividend payments (each year), different tax rules may be due.
 > 
 > The principles listed above are valid only if you spend most of your time/efforts on tasks which contribute directly to your company’s core business (deliver a service, build a software product, promote your service etc) while keeping the proportion of management/administrative tasks at a minimal level. If this assumption is not true i.e. you are mainly involved in management/administrative tasks in your company (e.g. having the core business functions fully outsourced), the % of salary paid for the management/administrative tasks is reported and taxed in Estonia independent of your actual location.
+
+### February 19th (Week 18): TransferWise account fully approved
+
+My TransferWise account was approved, meaning I can receive and make payments.
