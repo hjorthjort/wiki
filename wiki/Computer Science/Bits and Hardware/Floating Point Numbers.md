@@ -111,3 +111,9 @@ means that NaN is the only value that has many different representations.
 
 The lowest value exponent (all 0s) represents subnormal numbers. It's a way to
 ensure that we can represent numbers very close to 0.
+
+Determinism
+-----------
+
+Floating point with canonical NaNs makes floating point deterministic, but slows it down a bit
+The rationale for keeping them is that if you include Rust code which uses floats, and the compiler can't optimize away those functions, then you will still have some floating points in your contract, but it's expected they will not be used.

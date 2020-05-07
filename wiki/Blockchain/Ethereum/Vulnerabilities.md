@@ -97,7 +97,8 @@ function take_over() {
 }
 ```
 
-The relevant feature is that in order to make state change, it first performs a send, and throws if that fails (due to lak of gas), rather than doing some more careful error handling. The default gas amount that gets passed along with `send** is 23,000. 
+The relevant feature is that in order to make state change, it first performs a send, and throws if that fails (due to lack of gas), rather than doing some more careful error handling.
+The default gas amount that gets passed along with `send` is 23,000.
 
 **A contract calling send _must_ pass along enough gas to execute the default function, or the send will be unsuccessful.**
 

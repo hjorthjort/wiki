@@ -75,3 +75,25 @@ You can pass the flag `--haskell-backend-command kore-repl` to `kprove`.
 From Virgil:
 
 > Instead of running the haskell backend with `kore-exec`,  you can run it with `kore-repl` with the same command line flags, and then you can step through your proof. If you're lucky, `step 100` or some other large number will run the repl until the error you mentioned before, but the repl stops at branching points and you need to select a branch (`select <number>`) and restart it manually (`step 100 again`). You also have nice things like displaying past and current configurations (`config <number>`), the execution graph (`graph`) and so on (help to see all options).
+
+Even better, do
+
+```
+cd .build/defn/haskell  # Or wherever your semantics were built with kompile.
+
+LEMMAS_FILE=KEWASM-LEMMAS
+SPEC_FILE=../../../tests/proofs/invoke-contract-spec.k
+HASKELL_BACKEND="$HOME/ewasm-semantics/deps/wasm-semantics/deps/k/haskell-backend/src/main/native/haskell-backend" \
+BIN_DIR="$(cd $HASKELL_BACKEND; stack path --local-install-root)/bin" \
+sh -c \
+  'kprove --debug --dry-run \
+      --haskell-backend-command "$BIN_DIR/kore-repl \
+      --repl-script $HASKELL_BACKEND/dist/kast.kscript" \
+      -d . \
+      -m $LEMMAS_FILE \
+      $SPEC_FILE'
+```
+
+This will print the command that was run, which you can invoke.
+That is a lot faster than going through `kprove` every time, since that actually rebuilds the semantics (in a `.kprove-...` directory)
+
