@@ -85,3 +85,31 @@ The Haskell and Java backends uses unification to find out if there is an inters
 # Kast vs. Kore #
 
 Kast is what the Java and OCaml backend speaks, and Kore is what the LLVM and Haskell backends speaks.
+
+# Configuration Cells as Data #
+
+
+```k
+    syntax Bool ::= allPositive(AccountsCell) [function]
+ // ----------------------------------------------------
+    rule allPositive(_) => true [owise]
+    rule allPositive(<accounts>
+                       <account>
+                         ...
+                         <someField> X </someField>
+                         ...
+                       </account>
+                     </accounts>
+                     )
+      => false
+    requires X <Int 0
+    
+    ...
+    
+    rule <k> #allSomeFieldPositive => allPositive(<accounts> ACCS </accounts>) ... </k>
+         <accounts> ACCS </accounts>
+```
+
+Reference image from pair programming:
+
+![](passing_cells.png)
