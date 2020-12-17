@@ -38,7 +38,7 @@ All following communications arrive by e-mail.
 
 > Dear <NAME>,
 > 
-> The Estonian Police and Border Guard Board has granted e-Residency to <NAME> born on <DATE>, Estonian personal identification code <CODE>.
+> The Estonian Police and Border Guard Board has granted e-Residency to NAME born on DATE, Estonian personal identification code CODE.
 > 
 > Your document is not ready to be picked up yet. You will be notified upon its arrival to the place of issue, your pick-up location, within the next 2-5 weeks.
 > 
